@@ -20,10 +20,12 @@ try:
     with connection.cursor() as cursor:
 
         # SQL
-        sql = "SELECT mmsi,Report_date, ipsender \
-        FROM position_report \
-        where Report_date > (now() - interval 3 hour)\
-        order by Report_date desc"
+        sql = "SELECT \
+    ipsender, count(1) as num \
+    FROM position_report \
+    where Report_date > (now() - interval 3 hour) \
+    group by ipsender \
+    order by count(1) desc"
         # Execute query.
         cursor.execute(sql)
 
