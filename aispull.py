@@ -5,11 +5,13 @@ import sys
 print(sys.version)
 
 print "hello peter mera"
+result_test = ""
 connection = pymysql.connect(host='192.168.1.103',
                              user='peter',
                              password='Peter_Th',
                              db='test_ais',
-                             charset='utf8mb4',
+                             #charset='utf8mb4',
+                             charset='utf8',
                              cursorclass=pymysql.cursors.DictCursor)
 
 print ("connect successful!!")
@@ -28,13 +30,21 @@ try:
     order by count(1) desc"
         # Execute query.
         cursor.execute(sql)
+        result = cursor.fetchall()
+        print result
+        # print str(cursor.fetchall())
+        for row in result:
+            print('ip address')
+            print(row['ipsender'])
+            print('number of messages')
+            print(row['num'])
 
-        print ("cursor.description: ", cursor.description)
 
-        print()
 
-        for row in cursor:
-            print(row)
+
+        # for row in cursor:
+
+            # print(row)
 
 finally:
     # Close connection.
