@@ -34,9 +34,8 @@ try:
         print result
         # print str(cursor.fetchall())
         for row in result:
-            print('ip address')
+            print('ip address and number of messages')
             print(row['ipsender'])
-            print('number of messages')
             print(row['num'])
 
 
