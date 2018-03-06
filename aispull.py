@@ -25,7 +25,7 @@ try:
         sql = "SELECT \
     ipsender, count(1) as num \
     FROM position_report \
-    where Report_date > (now() - interval 3 hour) \
+    where Report_date > (now() - interval 24 hour) \
     group by ipsender \
     order by count(1) desc"
         # Execute query.
